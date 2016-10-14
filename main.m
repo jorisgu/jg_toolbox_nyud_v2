@@ -1,3 +1,4 @@
+%% Loading
 clear all;
 % load('/c16/THESE.JORIS/datasets/NYUD_V2/mat/images.mat')
 load('/c16/THESE.JORIS/datasets/NYUD_V2/mat/rawDepths.mat')
@@ -6,8 +7,9 @@ load('/c16/THESE.JORIS/datasets/NYUD_V2/mat/rawDepths.mat')
 % load('/c16/THESE.JORIS/datasets/NYUD_V2/mat/instances.mat')
 
 
-data_path = '/c16/THESE.JORIS/datasets/NYUD_V2/dataTest';
+data_path = '/c16/THESE.JORIS/datasets/NYUD_V2/data';
 nb_image = size(rawDepths,3);
+%% Loop
 for ii = 1:nb_image
     
     disp(strcat('Processing image n°', num2str(ii), '/', num2str(nb_image)))
@@ -26,7 +28,7 @@ for ii = 1:nb_image
     
     %% raw depth
     %a_d_raw_show = showIt(a_d_raw, false);
-
+    
     
     
     % joint (colorised)
