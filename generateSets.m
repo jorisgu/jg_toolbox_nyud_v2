@@ -1,10 +1,11 @@
 clc;clear all;close all;
 
-data_path = '/c16/THESE.JORIS/datasets/NYUD_V2/data';
-load('/c16/THESE.JORIS/datasets/NYUD_V2/mat/labels.mat')
-nb_image = size(labels,3);
+data_path = '/data/workspace/datasets/NYUD_V2/data';
+% load('/c16/THESE.JORIS/datasets/NYUD_V2/mat/labels.mat')
+% nb_image = size(labels,3);
+nb_image = 1449;
 
-percentageTest = 40.0;
+percentageTest = 20.0;
 nb_imageTest = round(percentageTest /100.0 * nb_image);
 nb_imageTrain = nb_image - nb_imageTest;
 
@@ -20,11 +21,11 @@ disp(['------- Only train : ' num2str(nb_imageTrain-nb_imageVal)])
 disp(['-------- Only eval : ' num2str(nb_imageVal)])
 
 
-if ~exist('/c16/THESE.JORIS/datasets/NYUD_V2/mat/imagesPermutation.mat','file')
+if ~exist('/data/workspace/datasets/NYUD_V2/mat/imagesPermutation.mat','file')
     imagesPermutation = randperm(nb_image);
-    save('/c16/THESE.JORIS/datasets/NYUD_V2/mat/imagesPermutation.mat', 'imagesPermutation')
+    save('/data/workspace/datasets/NYUD_V2/mat/imagesPermutation.mat', 'imagesPermutation')
 else
-    load('/c16/THESE.JORIS/datasets/NYUD_V2/mat/imagesPermutation.mat');
+    load('/data/workspace/datasets/NYUD_V2/mat/imagesPermutation.mat');
 end
 
 
