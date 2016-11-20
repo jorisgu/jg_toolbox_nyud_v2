@@ -41,9 +41,9 @@ for ii = 1:nb_image
     %saveIt( a_rgb, data_path, 'rgb_raw_8bits', a_name, a_extension)
     %a_hsv = rgb2hsv(a_rgb);
     
-    for jj = 90:-10:10
-        saveIt( changeLuminosity(a_rgb,jj), data_path, strcat('rgb_i_',int2str(jj),'_8bits'), a_name, a_extension)
-    end
+    %     for jj = 90:-10:10
+    %         saveIt( changeLuminosity(a_rgb,jj), data_path, strcat('rgb_i_',int2str(jj),'_8bits'), a_name, a_extension)
+    %     end
 
     %% raw depth
     %a_d_raw_show = showIt(a_d_raw, false);
