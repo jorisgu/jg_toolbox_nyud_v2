@@ -37,27 +37,27 @@ mkdir rgb_iRange_50_10_8bits
 
 
 cp rgb_i_50_8bits/*.png rgb_iRange_50_10_8bits/
-cd rgb_i_range_50-60_8bits
+cd rgb_iRange_50_10_8bits
 rename -v 's/^([0-9]{4})(.png)/i50_$1$2/' *
 cd ..
 
 cp rgb_i_40_8bits/*.png rgb_iRange_50_10_8bits/
-cd rgb_i_range_50-60_8bits
+cd rgb_iRange_50_10_8bits
 rename -v 's/^([0-9]{4})(.png)/i40_$1$2/' *
 cd ..
 
 cp rgb_i_30_8bits/*.png rgb_iRange_50_10_8bits/
-cd rgb_i_range_50-60_8bits
+cd rgb_iRange_50_10_8bits
 rename -v 's/^([0-9]{4})(.png)/i30_$1$2/' *
 cd ..
 
 cp rgb_i_20_8bits/*.png rgb_iRange_50_10_8bits/
-cd rgb_i_range_50-60_8bits
+cd rgb_iRange_50_10_8bits
 rename -v 's/^([0-9]{4})(.png)/i20_$1$2/' *
 cd ..
 
 cp rgb_i_10_8bits/*.png rgb_iRange_50_10_8bits/
-cd rgb_i_range_50-60_8bits
+cd rgb_iRange_50_10_8bits
 rename -v 's/^([0-9]{4})(.png)/i10_$1$2/' *
 cd ..
 
