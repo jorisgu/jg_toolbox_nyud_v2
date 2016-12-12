@@ -46,59 +46,52 @@ if ~exist(sets_path, 'dir')
     mkdir(sets_path);
 end
 
-fileID = fopen(fullfile(sets_path,'test.txt'),'w');
+%% _i_all
+intensitiesAvailable = 60:10:100
+rangeName = 'i_100_60';
+
+fileID = fopen(fullfile(sets_path,strcat('test_',rangeName,'.txt')),'w');
 for ii = 1:numel(indice_Test)
   num_image = imagesPermutation(indice_Test(ii));
-  fprintf(fileID,'%04d\n', num_image);
+  for jj = intensitiesAvailable
+    fprintf(fileID,'i%d_%04d\n', [jj num_image]);
+  end
 end
 fclose(fileID);
 
 
 
-fileID = fopen(fullfile(sets_path,'val.txt'),'w');
+fileID = fopen(fullfile(sets_path,strcat('val_',rangeName,'.txt')),'w');
 for ii = 1:numel(indice_Val)
   num_image = imagesPermutation(indice_Val(ii));
-  fprintf(fileID,'%04d\n', num_image);
+  for jj = intensitiesAvailable
+    fprintf(fileID,'i%d_%04d\n', [jj num_image]);
+  end
 end
 fclose(fileID);
 
 
-fileID = fopen(fullfile(sets_path,'train.txt'),'w');
+fileID = fopen(fullfile(sets_path,strcat('train_',rangeName,'.txt')),'w');
 for ii = 1:numel(indice_TrainOnly)
   num_image = imagesPermutation(indice_TrainOnly(ii));
-  fprintf(fileID,'%04d\n', num_image);
+  for jj = intensitiesAvailable
+    fprintf(fileID,'i%d_%04d\n', [jj num_image]);
+  end
 end
 fclose(fileID);
 
 
-fileID = fopen(fullfile(sets_path,'trainval.txt'),'w');
+fileID = fopen(fullfile(sets_path,strcat('trainval_',rangeName,'.txt')),'w');
 for ii = 1:numel(indice_TrainOnly)
   num_image = imagesPermutation(indice_TrainOnly(ii));
-  fprintf(fileID,'%04d\n', num_image);
+  for jj = intensitiesAvailable
+    fprintf(fileID,'i%d_%04d\n', [jj num_image]);
+  end
 end
 for ii = 1:numel(indice_Val)
   num_image = imagesPermutation(indice_Val(ii));
-  fprintf(fileID,'%04d\n', num_image);
+  for jj = intensitiesAvailable
+    fprintf(fileID,'i%d_%04d\n', [jj num_image]);
+  end
 end
 fclose(fileID);
-
-% 
-% for jj = 1:nb_image
-%     if jj<=nb_imageTest
-%     ii = imagesPermutation(jj);
-%     a_name = sprintf('%04d', ii);
-% end
-
-% fileID = fopen('celldata.dat','w');
-% formatSpec = '%s %d %2.1f %s\n';
-% [nrows,ncols] = size(C);
-% for row = 1:nrows
-%     fprintf(fileID,formatSpec,C{row,:});
-% end
-% fclose(fileID);% fileID = fopen('celldata.dat','w');
-% formatSpec = '%s %d %2.1f %s\n';
-% [nrows,ncols] = size(C);
-% for row = 1:nrows
-%     fprintf(fileID,formatSpec,C{row,:});
-% end
-% fclose(fileID);
