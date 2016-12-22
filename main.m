@@ -36,6 +36,15 @@ for ii = 1:nb_image
     a_name = sprintf('%04d', ii);
     a_extension = 'png';
     
+    
+    %% label gupta
+    
+    a_label_nonzeros = a_label;
+    a_label_nonzeros(a_label==0)=1;
+    a_label_gupta = arrayfun(@(x) mapClass(x),a_label_nonzeros );
+    a_label_gupta(a_label==0)=0;
+    saveIt( a_label_gupta, data_path, 'labels_gupta', a_name, a_extension)
+
     %% rgb
     %showIt(a_rgb);
     %saveIt( a_rgb, data_path, 'rgb_raw_8bits', a_name, a_extension)
