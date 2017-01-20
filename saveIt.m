@@ -12,5 +12,5 @@ if ~exist(dir_path, 'dir')
 end
 
 img_uint8 = uint8(img);
-imwrite(img_uint8 ,img_path)
+imwrite(img_uint8 ,img_path);
 end

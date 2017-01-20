@@ -1,14 +1,14 @@
 %% Loading
-clear all;close all;clc;
-addpath('/c16/THESE.JORIS/matlab_toolbox/colorspace')
-%nyudv2_path = '/data/workspace/datasets/NYUD_V2/';
-nyudv2_path = '/c16/THESE.JORIS/datasets/NYUD_V2/';
-load(fullfile(nyudv2_path,'mat','images.mat'))
-load(fullfile(nyudv2_path,'mat','rawDepths.mat'))
-load(fullfile(nyudv2_path,'mat','depths.mat'))
-load(fullfile(nyudv2_path,'mat','labels.mat'))
-load(fullfile(nyudv2_path,'mat','instances.mat'))
-load(fullfile(nyudv2_path,'mat','names.mat'))
+% clear all;close all;clc;
+% addpath('/c16/THESE.JORIS/matlab_toolbox/colorspace_toolbox')
+% %nyudv2_path = '/data/workspace/datasets/NYUD_V2/';
+% nyudv2_path = '/c16/THESE.JORIS/datasets/NYUD_V2/';
+% load(fullfile(nyudv2_path,'mat','images.mat'))
+% load(fullfile(nyudv2_path,'mat','rawDepths.mat'))
+% load(fullfile(nyudv2_path,'mat','depths.mat'))
+% load(fullfile(nyudv2_path,'mat','labels.mat'))
+% load(fullfile(nyudv2_path,'mat','instances.mat'))
+% load(fullfile(nyudv2_path,'mat','names.mat'))
 
 
 data_path = fullfile(nyudv2_path,'data');
@@ -24,7 +24,8 @@ load(fullfile(nyudv2_path,'mat','classMapping40.mat'))
 mapping = containers.Map(allClassName,className(mapClass));
 
 %% Loop
-for ii = 1:nb_image
+% for ii = 1:nb_image
+for ii = 1:1
     
     disp(strcat('Processing image n°', num2str(ii), '/', num2str(nb_image)))
     
@@ -42,9 +43,13 @@ for ii = 1:nb_image
     a_label_nonzeros = a_label;
     a_label_nonzeros(a_label==0)=1;
     a_label_gupta = arrayfun(@(x) mapClass(x),a_label_nonzeros );
-    a_label_gupta(a_label==0)=0;
-    saveIt( a_label_gupta, data_path, 'labels_gupta', a_name, a_extension)
-
+    a_label_gupta = a_label_gupta-1;
+    a_label_gupta(a_label==0)=255;
+    a_label_gupta=uint8(a_label_gupta);
+%     saveIt( a_label_gupta, data_path, 'labels_gupta', a_name, a_extension)
+%[gtim,map] = imread('/c16/THESE.JORIS/datasets/PASCAL_VOC/VOCdevkit/VOC2007/SegmentationObject/000032.png');
+% use the same map ?? in imwrite...
+    
     %% rgb
     %showIt(a_rgb);
     %saveIt( a_rgb, data_path, 'rgb_raw_8bits', a_name, a_extension)
@@ -53,7 +58,7 @@ for ii = 1:nb_image
     %     for jj = 90:-10:10
     %         saveIt( changeLuminosity(a_rgb,jj), data_path, strcat('rgb_i_',int2str(jj),'_8bits'), a_name, a_extension)
     %     end
-
+    
     %% raw depth
     %a_d_raw_show = showIt(a_d_raw, false);
     
@@ -90,11 +95,11 @@ for ii = 1:nb_image
     %     % normalised
     %     saveIt( a_d_show, data_path, 'd_normalised', a_name, a_extension)
     
-    %     %% instances
+    %% instances
     %     a_i_show = showIt(a_instance,false);
     %     saveIt( a_i_show, data_path, 'instances', a_name, a_extension)
     %
-    %     %% labels
+    %% labels
     %     a_l_show = showIt(a_label,false);
     %     saveIt( a_l_show, data_path, 'labels', a_name, a_extension)
     
