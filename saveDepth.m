@@ -13,17 +13,30 @@ switch depthType
         imwrite(newImage ,img_path)
     case 'normal'
         switch bits
-            case '8bits'
-                newImage = uint8(255.0 * img / 10.0);
-            case '16bits'
-                newImage = uint16(65535.0 * img / 10.0);
+            case '16to8bits'
+                newImage = uint8(255.0 / 65535.0 * img );
+            case '16to16bits'
+                newImage = uint16(img);
+            case '8to8bits'
+                newImage = uint8(img);
+            case '8to16bits'
+                newImage = uint16(65535.0 / 255.0 * img);
         end
         imwrite(newImage ,img_path)
     case 'HHA'
         % depth rendering in HHA from Gupta
         warning('HHA depthType not defined here : look at depthRcnn toolbox.')
     case 'jet'
-        newImage = uint8(255.0 * img / 10.0);
+        switch bits
+            case '16to8bits'
+                newImage = uint8(255.0 / 65535.0 * img );
+            case '16to16bits'
+                newImage = uint16(img);
+            case '8to8bits'
+                newImage = uint8(img);
+            case '8to16bits'
+                newImage = uint16(65535.0 / 255.0 * img);
+        %         newImage = uint8(255.0 * img / 10.0);
         imwrite(newImage, jet, img_path)
     case 'jet_focus'
         newImage = saveDepthFocus(img, option1, option2, bits);
