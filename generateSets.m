@@ -22,9 +22,11 @@ disp(['-------- Only eval : ' num2str(nb_imageVal)])
 
 
 if ~exist('/data/workspace/datasets/NYUD_V2/mat/imagesPermutation.mat','file')
+    disp('New permutation')
     imagesPermutation = randperm(nb_image);
     save('/data/workspace/datasets/NYUD_V2/mat/imagesPermutation.mat', 'imagesPermutation')
 else
+    disp('Loading old permutation')
     load('/data/workspace/datasets/NYUD_V2/mat/imagesPermutation.mat');
 end
 
