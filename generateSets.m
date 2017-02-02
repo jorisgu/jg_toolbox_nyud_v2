@@ -1,5 +1,6 @@
 clc;clear all;close all;
 
+% basic_path = '/data/workspace/datasets/NYUD_V2';
 basic_path = '/c16/THESE.JORIS/datasets/NYUD_V2';
 data_path = fullfile(basic_path,'data');
 
@@ -20,6 +21,7 @@ disp(['---------- train : ' num2str(nb_imageTrain)])
 disp(' Train repartition : ')
 disp(['------- Only train : ' num2str(nb_imageTrain-nb_imageVal)])
 disp(['-------- Only eval : ' num2str(nb_imageVal)])
+
 
 
 if ~exist(fullfile(basic_path ,'/mat/imagesPermutation.mat'),'file')
